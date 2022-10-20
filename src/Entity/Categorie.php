@@ -43,6 +43,11 @@ class Categorie
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getTitre(); // Remplacer champ par une propriété "string" de l'entité
+    }
+
     /**
      * @return Collection<int, Formation>
      */

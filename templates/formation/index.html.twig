@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+    <h1>Formations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.titre }}</td>
+                <td>{{ formation.description }}</td>
+                <td>
+                    <a href="{{ path('app_formation_show', {'id': formation.id}) }}"><button type="button" class="btn btn-primary">Afficher</button></a>
+                    <a href="{{ path('app_formation_edit', {'id': formation.id}) }}"><button type="button" class="btn btn-info">Editer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">La formation n'existe pas</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_formation_new') }}"><button type="button" class="btn btn-primary">Créer</button></a>
+{% endblock %}
